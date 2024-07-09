@@ -1,5 +1,9 @@
 apply(from = "../code_quality/detekt.gradle")
 apply(from = "../code_style/ktlint.gradle")
+apply(from = "../scripts/git_hook.gradle")
+val sdk = 34
+val minsdk = 28
+val targetsdk = 34
 
 plugins {
     alias(libs.plugins.android.application)
@@ -8,12 +12,12 @@ plugins {
 
 android {
     namespace = "com.example.andlint"
-    compileSdk = 34
+    compileSdk = sdk
 
     defaultConfig {
         applicationId = "com.example.andlint"
-        minSdk = 28
-        targetSdk = 34
+        minSdk = minsdk
+        targetSdk = targetsdk
         versionCode = 1
         versionName = "1.0"
 
@@ -30,8 +34,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_7
+        targetCompatibility = JavaVersion.VERSION_1_7
     }
     kotlinOptions {
         jvmTarget = "1.8"
